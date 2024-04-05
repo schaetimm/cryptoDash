@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crypto_filter %}
+
+{% block content %}
+<div class="crypto-container">
+    {% for coin in data.result %}
+    {% with coin.24h|cut:"%" as pct_change_str %}
+    {% with pct_change_str|floatformat:2 as pct_float_str %}
+
+    <div class="crypto-card
+    {% if pct_float_str > "5" %} high-change{% elif pct_float_str > "0" and  pct_float_str <= "2" %}
+    low-change{% elif pct_float_str > "2" %}
+    higher-change
+    {% elif pct_float_str < "0" %} negative-change
+    {% endif %}">
+        <div class="crypto-header">
+            <h2>{{ coin.name|split_name }}</h2>
+            <h4>{{ coin.price }} USD</h4>
+            <h5>{{ coin.24h }}</h5>
+        </div>
+        <div class="crypto-body">
+            <div class="crypto-details">
+                <h3 class="crypto-price">Price: {{ coin.price }}USD</h3>
+                <div class="crypto-stats">
+                    <p>name: {{ coin.name }}</p>
+                    <p>1h: {{ coin.1h }}</p>
+                    <p>24h: {{ coin.24h }}</p>
+                    <p>7d: {{ coin.7d }}</p>
+                    <p>Market Cap: {{ coin.marketCap }}</p>
+                    <p>Volume (24h): {{ coin.volume }}</p>
+                    <p>Circulating Supply: {{ coin.circulatingSupply }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endwith %}
+    {% endwith %}
+
+    {% endfor %}
+</div>
+{% endblock %}

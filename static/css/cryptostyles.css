@@ -1,0 +1,76 @@
+.crypto-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+.crypto-stats p {
+    font-size: 0.8em;
+    margin: 4px 0;
+}
+
+
+.crypto-card {
+  flex: 0 1 calc(20% - 16px);
+  min-height: 220px;
+
+    border-radius: 10px;
+    width: calc(20% - 16px); /* Anpassen für die Anzahl der Karten pro Reihe */
+    position: relative;
+    overflow: hidden; /* Damit nichts über die Ränder der Karte hinausragt */
+    cursor: pointer; /* Ändert den Mauszeiger, um Interaktivität zu signalisieren */
+}
+.crypto-price {
+    font-size: 0.8em;
+    margin: 10px 0;
+}
+
+.crypto-header h2 {
+    padding: 20px;
+    font-size: 1.5em; /* Größe des Kryptowährungsnamens */
+    top: 40px;
+    color: white; /* Farbe des Kryptowährungsnamens */
+}
+
+.crypto-body .crypto-details {
+    position: absolute;
+    top: 100%; /* Beginnt außerhalb der Karte */
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.8); /* Dunkler Hintergrund für die Details */
+    color: white; /* Farbe der Textdetails */
+    transition: top 0.3s; /* Glatte Übergangseffekt */
+    padding: 10px;
+}
+
+.crypto-card:hover .crypto-details {
+    top: 0; /* Details erscheinen, wenn die Maus darüber ist */
+}
+
+/* Stilisierung der Statistiken und des Preises */
+.crypto-price, .crypto-stats p {
+    display: none; /* Versteckt standardmäßig den Preis und die Statistiken */
+    text-align: center; /* Zentriert den Text */
+}
+
+.crypto-card:hover .crypto-price, .crypto-card:hover .crypto-stats p {
+    display: block; /* Zeigt den Preis und die Statistiken beim Hovern an */
+}
+
+.high-change {
+  background-color: #27c02f;
+}
+
+/* Blassgrün für Werte unter 1% */
+.low-change {
+  background-color: #73c273;
+}
+
+.higher-change {
+    background-color: #4fdc4f;
+}
+
+.negative-change {
+    background-color: #ff0000;
+}
+
+

@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+<title>Broker</title>
+<h1 class="broker-title">Brokers</h1>
+<div class="broker-container">
+    {% for broker in brokers %}
+    <div class="broker-card">
+        <img src="{{ broker.image_url }}" class="card-img-top" alt="{{ broker.name }}">
+        <div class="card-body">
+            <h5 class="card-title broker-name">{{ broker.name }}</h5>
+            <p class="card-text broker-description short">{{ broker.description }}</p>
+            <button class="read-more">Mehr anzeigen</button>
+            <a href="{{ broker.url }}" class="btn broker-link">Zum Broker</a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
